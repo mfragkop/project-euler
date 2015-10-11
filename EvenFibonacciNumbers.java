@@ -13,38 +13,29 @@
 
 public class EvenFibonacciNumbers {
 	
-	private static int fib(int a){
-		if( a==1 ){
-			return 1;
-		}
-		else if (a == 2){
-			return 2;
-		}
-		else{
-			return fib(a-1)+fib(a-2);
-		}
-	}
+	private static final int MAX_NUMBER = 4000000;
 	
-	public static int addEvenFib(int MAX_NUMBER){
-		boolean limit_exceeded = false;
-		int i = 1;
+	public static int addEvenFib(){
+		int a = 1;
+		int b = 2;
 		int sumOfEvens = 0;
-		while(!limit_exceeded){
-			int f = fib(i);
-			if ( f > MAX_NUMBER){
-				limit_exceeded = true;
+		while(true){
+			
+			if ( b > MAX_NUMBER){
+				break;
 			}
-			if( f  % 2 == 0 ){
-				sumOfEvens += f; 
+			if( b  % 2 == 0 ){
+				sumOfEvens += b; 
 			}
-			i++;
+			int c =a+b;
+			a=b;
+			b=c;
 		}
+		
 		return sumOfEvens;
 	}
 
-	private static final int MAX_NUMBER = 4000000;
-
 	public static void main(String[] args){
-		System.out.println(EvenFibonacciNumbers.addEvenFib(MAX_NUMBER));
+		System.out.println(EvenFibonacciNumbers.addEvenFib());
 	}
 }
